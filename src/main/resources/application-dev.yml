@@ -1,0 +1,6 @@
+spring:
+  liquibase:
+    contexts: dev
+app:
+  cache:
+    enabled: false

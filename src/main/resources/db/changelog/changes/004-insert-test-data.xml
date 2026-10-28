@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd">
+
+    <!-- Пользователи -->
+    <changeSet id="004-insert-users" author="yo" context="dev,test">
+        <insert tableName="users">
+            <column name="name" value="Иван Иванов"/>
+            <column name="email" value="ivan@example.com"/>
+        </insert>
+        <insert tableName="users">
+            <column name="name" value="Мария Петрова"/>
+            <column name="email" value="maria@example.com"/>
+        </insert>
+        <insert tableName="users">
+            <column name="name" value="Пётр Сидоров"/>
+            <column name="email" value="petr@example.com"/>
+        </insert>
+    </changeSet>
+
+    <!-- Категории -->
+    <changeSet id="004-insert-categories" author="yo" context="dev,test">
+        <insert tableName="categories">
+            <column name="name" value="Работа"/>
+        </insert>
+        <insert tableName="categories">
+            <column name="name" value="Личное"/>
+        </insert>
+        <insert tableName="categories">
+            <column name="name" value="Учёба"/>
+        </insert>
+        <insert tableName="categories">
+            <column name="name" value="Дом"/>
+        </insert>
+    </changeSet>
+
+    <!-- Задачи -->
+    <changeSet id="004-insert-tasks" author="yo" context="dev,test">
+        <insert tableName="tasks">
+            <column name="title" value="Доделать проект"/>
+            <column name="description" value="Финализировать миграции Liquibase"/>
+            <column name="created_at" valueDate="2026-10-01T09:00:00"/>
+            <column name="user_id" value="1"/>
+            <column name="category_id" value="1"/>
+        </insert>
+        <insert tableName="tasks">
+            <column name="title" value="Созвон с командой"/>
+            <column name="description" value="Обсудить спринт"/>
+            <column name="created_at" valueDate="2026-10-01T10:00:00"/>
+            <column name="user_id" value="1"/>
+            <column name="category_id" value="1"/>
+        </insert>
+        <insert tableName="tasks">
+            <column name="title" value="Купить продукты"/>
+            <column name="description" value="Молоко, хлеб, яйца"/>
+            <column name="created_at" valueDate="2026-10-02T18:00:00"/>
+            <column name="user_id" value="1"/>
+            <column name="category_id" value="4"/>
+        </insert>
+        <insert tableName="tasks">
+            <column name="title" value="Прочитать главу по JPA"/>
+            <column name="description" value="Глава 5 — связи между сущностями"/>
+            <column name="created_at" valueDate="2026-10-02T20:00:00"/>
+            <column name="user_id" value="2"/>
+            <column name="category_id" value="3"/>
+        </insert>
+        <insert tableName="tasks">
+            <column name="title" value="Сделать зарядку"/>
+            <column name="description" value="Утренняя рутина"/>
+            <column name="created_at" valueDate="2026-10-03T07:00:00"/>
+            <column name="user_id" value="2"/>
+            <column name="category_id" value="2"/>
+        </insert>
+        <insert tableName="tasks">
+            <column name="title" value="Позвонить маме"/>
+            <column name="description" value=""/>
+            <column name="created_at" valueDate="2026-10-03T19:00:00"/>
+            <column name="user_id" value="2"/>
+            <column name="category_id" value="2"/>
+        </insert>
+        <insert tableName="tasks">
+            <column name="title" value="Ревью пул-реквеста"/>
+            <column name="description" value="Проверить код коллеги"/>
+            <column name="created_at" valueDate="2026-10-03T11:00:00"/>
+            <column name="user_id" value="3"/>
+            <column name="category_id" value="1"/>
+        </insert>
+        <insert tableName="tasks">
+            <column name="title" value="Обновить резюме"/>
+            <column name="description" value="Добавить опыт с Spring Boot"/>
+            <column name="created_at" valueDate="2026-10-04T15:00:00"/>
+            <column name="user_id" value="3"/>
+            <column name="category_id" value="3"/>
+        </insert>
+        <insert tableName="tasks">
+            <column name="title" value="Помыть машину"/>
+            <column name="description" value="Съездить на мойку"/>
+            <column name="created_at" valueDate="2026-10-04T16:00:00"/>
+            <column name="user_id" value="3"/>
+            <column name="category_id" value="4"/>
+        </insert>
+        <insert tableName="tasks">
+            <column name="title" value="Спланировать отпуск"/>
+            <column name="description" value="Выбрать направление и даты"/>
+            <column name="created_at" valueDate="2026-10-05T12:00:00"/>
+            <column name="user_id" value="1"/>
+            <column name="category_id" value="2"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,60 @@
+# ==========================================
+# 1. SERVER
+# ==========================================
+server:
+  port: 8080
+
+# ==========================================
+# 2. SPRING CORE
+# ==========================================
+spring:
+  application:
+    name: task-manager
+
+  # --- Database (PostgreSQL) ---
+  datasource:
+    url: jdbc:postgresql://localhost:5432/taskdb
+    username: user
+    password: password
+
+  # --- JPA / Hibernate ---
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+
+  # --- Migrations (Liquibase) ---
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.xml
+    contexts: ${LIQUIBASE_CONTEXTS:dev}
+
+  # --- Cache & Redis ---
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+  # --- Messaging (Kafka) ---
+  kafka:
+    bootstrap-servers: localhost:29092 # Подключаемся к внешнему порту (EXTERNAL) из Docker
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      # ★ Используем Jackson 3 сериализатор, так как старый JsonSerializer (Jackson 2) удален в Boot 4
+      value-serializer: org.springframework.kafka.support.serializer.JacksonJsonSerializer
+
+# ==========================================
+# 3. LOGGING
+# ==========================================
+logging:
+  level:
+    root: INFO
+    com.example.taskmanager: DEBUG
+    org.springframework.web: INFO
+    org.hibernate.SQL: DEBUG
+    org.hibernate.orm.jdbc.bind: TRACE
+  pattern:
+    console: "%clr(%d{HH:mm:ss.SSS}){faint} %clr(%-5level){} %clr([%thread]){faint} %clr(%logger{36}){cyan} %clr(-){faint} %msg%n"
